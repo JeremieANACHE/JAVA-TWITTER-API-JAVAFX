@@ -72,7 +72,7 @@
                                           <Font size="35.0" />
                                        </font>
                                     </TextField>
-                                    <TextFlow fx:id="headerTweetsHashtag" layoutX="72.0" layoutY="39.0" prefHeight="76.0" prefWidth="1083.0" textAlignment="CENTER" />
+                                    <TextFlow fx:id="headerTweetsHashtag" layoutX="72.0" layoutY="44.0" prefHeight="76.0" prefWidth="1083.0" textAlignment="CENTER" />
                                     <Text fill="WHITE" layoutX="559.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#">
                                        <font>
                                           <Font size="55.0" />

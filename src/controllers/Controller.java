@@ -103,8 +103,14 @@ public class Controller implements Initializable {
                 for(int i=0;i<list.size();i++)
                 {
                     Text tweetActuel = new Text(list.get(i) + "\n \n");
-                    tweetActuel.setFont(Font.font("MullerBlack", 23));
                     tweetActuel.setFill(Color.WHITE);
+                    if(list.size() < 2) {
+                        tweetActuel.setFont(Font.font("MullerBlack", 55));
+                    }
+                    else {
+                        tweetActuel.setFont(Font.font("MullerBlack", 23));
+
+                    }
                     contenuTweetsUser.getChildren().add(tweetActuel);
                 }
                 cadreTweetUser.setVisible(true);
@@ -131,7 +137,7 @@ public class Controller implements Initializable {
             contenuTweetsHashtag.getChildren().clear();
 
             hashtagRecherche.setText("Le dernier tweet sur #" + textHashtag.getText());
-            hashtagRecherche.setFont(Font.font("MullerBlack", 55));
+            hashtagRecherche.setFont(Font.font("MullerBlack", 45));
             hashtagRecherche.setFill(Color.BLACK);
             headerTweetsHashtag.getChildren().add(hashtagRecherche);
 

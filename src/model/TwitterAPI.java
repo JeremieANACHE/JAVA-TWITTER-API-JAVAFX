@@ -132,6 +132,7 @@ public class TwitterAPI {
     }
 
     public List<String> voirTweetsDe(String screenName) throws Exception {
+        List<String> list =  new ArrayList<>();
         OAuthConsumer consumer = new CommonsHttpOAuthConsumer(
                 ConsumerKey,
                 ConsumerSecret);
@@ -146,9 +147,13 @@ public class TwitterAPI {
         int statusCode = response.getStatusLine().getStatusCode();
         System.out.println(statusCode + ":" + response.getStatusLine().getReasonPhrase());
         String strReponse = (IOUtils.toString(response.getEntity().getContent()));
-
-        JSONArray jsonArray = (new JSONArray(strReponse));
-        List<String> list =  new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+        try{
+            JSONArray jsonArrayTest = new JSONArray(strReponse);
+            jsonArray = jsonArrayTest;
+        }
+        catch (Exception e){
+            list.add("Cet utilisateur n'existe pas !");}
         for(int i=0;i<jsonArray.length();i++) {
             list.add(jsonArray.getJSONObject(i).get("text").toString());
         }
@@ -178,10 +183,18 @@ public class TwitterAPI {
         try {
             JSONObject statuts = (new JSONObject(strReponseHashtag));
             JSONArray statutsArray = statuts.getJSONArray("statuses");
+            JSONObject tweet = new JSONObject();
             for(int i=1;i<statuts.length();i++) {
-                JSONObject tweet = new JSONObject((statutsArray.getJSONObject(0)).toString());
+                try{
+                    tweet = statutsArray.getJSONObject(0);
+                }
+                catch(Exception e){
+                    tweet.put("text", "Aucun tweet trouvé !");
+                }
+
                 Object contenutweet = tweet.get("text");
-                String tweetActuel = contenutweet.toString();
+                String tweetActuel = new String();
+                tweetActuel = contenutweet.toString();
                 list.add(tweetActuel);
             }
         }

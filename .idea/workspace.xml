@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/json-simple-1.1.1.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tweet-wall/controllers/Controller.class" afterPath="$PROJECT_DIR$/out/production/tweet-wall/controllers/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tweet-wall/model/TwitterAPI.class" afterPath="$PROJECT_DIR$/out/production/tweet-wall/model/TwitterAPI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/Controller.java" afterPath="$PROJECT_DIR$/src/controllers/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/TwitterAPI.java" afterPath="$PROJECT_DIR$/src/model/TwitterAPI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tweet-wall/view/sample.fxml" afterPath="$PROJECT_DIR$/out/production/tweet-wall/view/sample.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/sample.fxml" afterPath="$PROJECT_DIR$/src/view/sample.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,8 +77,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-73.333336">
-              <caret line="132" column="54" selection-start-line="132" selection-start-column="54" selection-end-line="132" selection-end-column="54" />
+            <state vertical-scroll-proportion="-11.666667">
+              <caret line="139" column="64" selection-start-line="139" selection-start-column="64" selection-end-line="139" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,8 +89,8 @@
       <file leaf-file-name="TwitterAPI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/TwitterAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5425532">
-              <caret line="100" column="62" selection-start-line="100" selection-start-column="62" selection-end-line="100" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.35106382">
+              <caret line="100" column="60" selection-start-line="100" selection-start-column="60" selection-end-line="100" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,8 +129,8 @@
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/controllers/Main.java" />
-        <option value="$PROJECT_DIR$/src/controllers/Controller.java" />
         <option value="$PROJECT_DIR$/src/view/sample.fxml" />
+        <option value="$PROJECT_DIR$/src/controllers/Controller.java" />
         <option value="$PROJECT_DIR$/src/model/TwitterAPI.java" />
       </list>
     </option>
@@ -732,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-73.333336">
-          <caret line="132" column="54" selection-start-line="132" selection-start-column="54" selection-end-line="132" selection-end-column="54" />
+        <state vertical-scroll-proportion="-11.666667">
+          <caret line="139" column="64" selection-start-line="139" selection-start-column="64" selection-end-line="139" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -742,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/TwitterAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5425532">
-          <caret line="100" column="62" selection-start-line="100" selection-start-column="62" selection-end-line="100" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.35106382">
+          <caret line="100" column="60" selection-start-line="100" selection-start-column="60" selection-end-line="100" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
