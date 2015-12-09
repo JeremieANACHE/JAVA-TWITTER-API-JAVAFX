@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import model.TwitterAPI;
@@ -28,6 +31,15 @@ public class Controller implements Initializable {
     public TextFlow contenuTweetsHashtag;
 
     @FXML
+    public TextFlow headerTweetsHashtag;
+
+    @FXML
+    public Rectangle cadreTweetUser;
+
+    @FXML
+    public Rectangle cadreTweetsHashtag;
+
+    @FXML
     private TextField textTweet;
 
     @FXML
@@ -38,6 +50,9 @@ public class Controller implements Initializable {
 
     @FXML
     private ProgressIndicator progressIncoming;
+
+    @FXML
+    private TextFlow headerTweets;
 
     @FXML
     public void tweet() {
@@ -69,9 +84,16 @@ public class Controller implements Initializable {
         TwitterAPI twitterAPI = new TwitterAPI();
         if(!textScreenName.getText().equals(""))
         {
+            Text nomDuTwitteur = new Text("");
+            headerTweets.getChildren().clear();
             List<String> list =  new ArrayList<>();
             list.clear();
             contenuTweetsUser.getChildren().clear();
+
+            nomDuTwitteur.setText("5 derniers tweets par @" + textScreenName.getText());
+            nomDuTwitteur.setFont(Font.font("MullerBlack", 55));
+            nomDuTwitteur.setFill(Color.BLACK);
+            headerTweets.getChildren().add(nomDuTwitteur);
 
             try {
 
@@ -81,9 +103,11 @@ public class Controller implements Initializable {
                 for(int i=0;i<list.size();i++)
                 {
                     Text tweetActuel = new Text(list.get(i) + "\n \n");
-
+                    tweetActuel.setFont(Font.font("MullerBlack", 23));
+                    tweetActuel.setFill(Color.WHITE);
                     contenuTweetsUser.getChildren().add(tweetActuel);
                 }
+                cadreTweetUser.setVisible(true);
             }
             catch(Exception e)
             {
@@ -99,9 +123,17 @@ public class Controller implements Initializable {
         TwitterAPI twitterAPI = new TwitterAPI();
         if(!textHashtag.getText().equals(""))
         {
+            Text hashtagRecherche = new Text("");
+            headerTweetsHashtag.getChildren().clear();
+
             List<String> list =  new ArrayList<>();
             list.clear();
             contenuTweetsHashtag.getChildren().clear();
+
+            hashtagRecherche.setText("Le dernier tweet sur #" + textHashtag.getText());
+            hashtagRecherche.setFont(Font.font("MullerBlack", 55));
+            hashtagRecherche.setFill(Color.BLACK);
+            headerTweetsHashtag.getChildren().add(hashtagRecherche);
 
             try {
                 list = twitterAPI.voirTweetsSur(textHashtag.getText());
@@ -110,15 +142,17 @@ public class Controller implements Initializable {
                 for(int i=0;i<list.size();i++)
                 {
                     Text tweetActuel = new Text(list.get(i) + "\n \n");
+                    tweetActuel.setFont(Font.font("MullerBlack", 45));
+                    tweetActuel.setFill(Color.WHITE);
                     contenuTweetsHashtag.getChildren().add(tweetActuel);
                 }
+                cadreTweetsHashtag.setVisible(true);
             }
             catch(Exception e)
             {
 
             }
         }
-
     }
 
 

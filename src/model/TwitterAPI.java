@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.text.Text;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import org.apache.commons.io.IOUtils;
@@ -8,7 +7,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -120,7 +119,7 @@ public class TwitterAPI {
             //erreur lel
         }
 
-        HttpClient clientR = new DefaultHttpClient();
+        HttpClient clientR = HttpClientBuilder.create().build();
         try{
             HttpResponse responseR = clientR.execute(requestPost);
             int statusCodeR = responseR.getStatusLine().getStatusCode();
@@ -141,7 +140,7 @@ public class TwitterAPI {
         HttpGet request = new HttpGet("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name="+screenName+"&count=5");
         consumer.sign(request);
 
-        HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = client.execute(request);
 
         int statusCode = response.getStatusLine().getStatusCode();
@@ -167,7 +166,7 @@ public class TwitterAPI {
         HttpGet request = new HttpGet("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"&count=5");
         consumer.sign(request);
 
-        HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = client.execute(request);
 
         int statusCode = response.getStatusLine().getStatusCode();
