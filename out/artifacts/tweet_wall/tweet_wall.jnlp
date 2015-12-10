@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="tweet_wall.jnlp">
+  <information>
+    <title>tweet-wall</title>
+    <vendor>Unknown</vendor>
+    <description>tweet-wall</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="tweet_wall.jar" size="19931" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="1200" height="800" main-class="view.Main"  name="tweet-wall" />
+  <update check="background"/>
+</jnlp>

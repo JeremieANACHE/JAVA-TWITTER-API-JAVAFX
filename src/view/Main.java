@@ -1,4 +1,4 @@
-package controllers;
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../ressources/sample.fxml"));
         primaryStage.setTitle("Twitter pour grille-pain");
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
@@ -28,7 +28,7 @@ public class Main extends Application {
 
         // Ajoute l'icone au démarrage sur mac
         try {
-            URL iconURL = Main.class.getResource("ressources/icon.png");
+            URL iconURL = Main.class.getResource("../ressources/icon.png");
             java.awt.Image image = new ImageIcon(iconURL).getImage();
             com.apple.eawt.Application.getApplication().setDockIconImage(image);
         } catch (Exception e) {
