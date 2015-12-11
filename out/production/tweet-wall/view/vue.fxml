@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+   <children>
+      <SplitPane dividerPositions="0.2" layoutX="-5.0" orientation="VERTICAL" pickOnBounds="false" prefHeight="801.0" prefWidth="1210.0" style="-fx-background-color: WHITE;">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: WHITE;">
+               <children>
+                  <Button layoutX="892.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#tweet" style="-fx-background-radius: 50px; -fx-background-color: RGB(85,172,238);" text="Tweeter" textFill="WHITE">
+                     <font>
+                        <Font name="MullerBlack" size="35.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="textTweet" layoutX="47.0" layoutY="32.0" prefHeight="108.0" prefWidth="799.0" style="-fx-background-radius: 200;" AnchorPane.leftAnchor="40.0">
+                     <font>
+                        <Font name="MullerBlack" size="40.0" />
+                     </font></TextField>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: RGB(85, 172, 238);">
+               <children>
+                  <TabPane layoutX="4.0" prefHeight="619.0" prefWidth="1211.0" style="-fx-background-color: RGB(85, 172, 238);" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Par identifiant">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="1100.0" style="-fx-background-color: RGB(85, 172, 238);">
+                                 <children>
+                                    <TextFlow fx:id="contenuTweetsUser" layoutX="71.0" layoutY="140.0" prefHeight="321.0" prefWidth="1080.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#55acee" height="155.0" layoutY="429.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1209.0" />
+                                    <Rectangle fx:id="cadreTweetUser" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="94.0" layoutX="72.0" layoutY="26.0" smooth="false" stroke="#ff000000" strokeLineCap="BUTT" strokeType="INSIDE" visible="false" width="1083.0" />
+                                    <Button fx:id="boutonGetTweetsUser" layoutX="42.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#getTweetUser" prefHeight="67.0" prefWidth="482.0" style="-fx-background-radius: 50px; -fx-background-color: WHITE;" text="Récupérer les tweets de :" textFill="#55acee" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0">
+                                       <font>
+                                          <Font name="MullerBlack" size="35.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="textScreenName" layoutX="524.0" layoutY="502.0" prefHeight="10.0" prefWidth="575.0" style="-fx-background-radius: 200;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0">
+                                       <font>
+                                          <Font size="35.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextFlow fx:id="headerTweets" layoutX="72.0" layoutY="39.0" prefHeight="76.0" prefWidth="1083.0" textAlignment="CENTER" />
+                                    <Text fill="WHITE" layoutX="546.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@">
+                                       <font>
+                                          <Font size="55.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Par Hashtag">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextFlow fx:id="contenuTweetsHashtag" layoutX="71.0" layoutY="140.0" prefHeight="321.0" prefWidth="1080.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#55acee" height="160.0" layoutX="1.0" layoutY="426.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1209.0" />
+                                    <Rectangle fx:id="cadreTweetsHashtag" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="94.0" layoutX="72.0" layoutY="26.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1083.0" />
+                                    <Button layoutX="19.0" layoutY="499.0" mnemonicParsing="false" onMouseClicked="#getTweetHashtag" prefHeight="67.0" prefWidth="482.0" style="-fx-background-radius: 50px; -fx-background-color: WHITE;" text="Récupérer les tweets sur :" textFill="#55acee" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0">
+                                       <font>
+                                          <Font name="MullerBlack" size="35.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="textHashtag" layoutX="544.0" layoutY="492.0" prefHeight="10.0" prefWidth="575.0" style="-fx-background-radius: 200;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0">
+                                       <font>
+                                          <Font size="35.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextFlow fx:id="headerTweetsHashtag" layoutX="72.0" layoutY="44.0" prefHeight="76.0" prefWidth="1083.0" textAlignment="CENTER" />
+                                    <Text fill="WHITE" layoutX="559.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#">
+                                       <font>
+                                          <Font size="55.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

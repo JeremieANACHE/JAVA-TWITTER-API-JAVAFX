@@ -62,8 +62,6 @@ public class Controller implements Initializable {
         {
             try
             {
-                progressIncoming.setVisible(true);
-                progressIncoming.setProgress(-1);
                 String message = URLEncoder.encode(textTweet.getText(), "UTF-8");
                 twitterAPI.tweetMessage(message);
             }
@@ -71,8 +69,6 @@ public class Controller implements Initializable {
             {
                 System.out.print(e.getMessage());
             }
-
-            progressIncoming.setVisible(false);
             textTweet.setText("");
         }
     }
@@ -166,6 +162,5 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        progressIncoming.setVisible(false);
     }
 }
