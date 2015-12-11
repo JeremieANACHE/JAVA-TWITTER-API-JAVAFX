@@ -100,7 +100,7 @@ public class Controller implements Initializable {
                 list = twitterAPI.voirTweetsDe(textScreenName.getText());
                 contenuTweetsUser.setLineSpacing(5);
                 contenuTweetsUser.setMaxWidth(1170);
-                for(int i=0;i<list.size();i++)
+                for (int i=0;i<list.size();i++)
                 {
                     Text tweetActuel = new Text(list.get(i) + "\n \n");
                     tweetActuel.setFill(Color.WHITE);

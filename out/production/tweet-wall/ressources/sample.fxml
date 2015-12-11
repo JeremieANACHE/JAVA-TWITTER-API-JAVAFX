@@ -17,7 +17,7 @@
                         <Font name="MullerBlack" size="35.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="textTweet" layoutX="47.0" layoutY="32.0" prefHeight="108.0" prefWidth="799.0" AnchorPane.leftAnchor="40.0">
+                  <TextField fx:id="textTweet" layoutX="47.0" layoutY="32.0" prefHeight="108.0" prefWidth="799.0" style="-fx-background-radius: 200;" AnchorPane.leftAnchor="40.0">
                      <font>
                         <Font name="MullerBlack" size="40.0" />
                      </font></TextField>
@@ -40,7 +40,7 @@
                                           <Font name="MullerBlack" size="35.0" />
                                        </font>
                                     </Button>
-                                    <TextField fx:id="textScreenName" layoutX="524.0" layoutY="502.0" prefHeight="10.0" prefWidth="575.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0">
+                                    <TextField fx:id="textScreenName" layoutX="524.0" layoutY="502.0" prefHeight="10.0" prefWidth="575.0" style="-fx-background-radius: 200;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0">
                                        <font>
                                           <Font size="35.0" />
                                        </font>
@@ -67,7 +67,7 @@
                                           <Font name="MullerBlack" size="35.0" />
                                        </font>
                                     </Button>
-                                    <TextField fx:id="textHashtag" layoutX="544.0" layoutY="492.0" prefHeight="10.0" prefWidth="575.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0">
+                                    <TextField fx:id="textHashtag" layoutX="544.0" layoutY="492.0" prefHeight="10.0" prefWidth="575.0" style="-fx-background-radius: 200;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0">
                                        <font>
                                           <Font size="35.0" />
                                        </font>
