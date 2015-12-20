@@ -16,6 +16,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import model.TwitterAPI;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.net.URLEncoder;
@@ -24,6 +26,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
+
     @FXML
     public TextFlow contenuTweetsUser;
 
@@ -58,18 +63,25 @@ public class Controller implements Initializable {
     public void tweet() {
 
         TwitterAPI twitterAPI = new TwitterAPI();
+        LOGGER.debug("fonction d'envoi de tweet");
         if(!textTweet.getText().equals(""))
         {
+            LOGGER.debug("Le tweet n'est pas vide");
             try
             {
                 String message = URLEncoder.encode(textTweet.getText(), "UTF-8");
                 twitterAPI.tweetMessage(message);
+                LOGGER.info("Tweet envoyé");
             }
             catch(Exception e)
             {
-                System.out.print(e.getMessage());
+                LOGGER.error(e.getMessage());
             }
             textTweet.setText("");
+            LOGGER.debug("réinitialisation du tweet");
+        }
+        else{
+            LOGGER.warn("Le message à envoyer ne doit pas être vide");
         }
     }
 
@@ -78,8 +90,11 @@ public class Controller implements Initializable {
     @FXML
     public void getTweetUser() {
         TwitterAPI twitterAPI = new TwitterAPI();
+        LOGGER.debug("Fonction de récupération de tweets");
         if(!textScreenName.getText().equals(""))
         {
+            LOGGER.debug("Le nom d'utilisateur n'est pas vide");
+
             Text nomDuTwitteur = new Text("");
             headerTweets.getChildren().clear();
             List<String> list =  new ArrayList<>();
@@ -92,7 +107,7 @@ public class Controller implements Initializable {
             headerTweets.getChildren().add(nomDuTwitteur);
 
             try {
-
+                LOGGER.debug("Requête de récupération de tweets");
                 list = twitterAPI.voirTweetsDe(textScreenName.getText());
                 contenuTweetsUser.setLineSpacing(5);
                 contenuTweetsUser.setMaxWidth(1170);
@@ -110,11 +125,15 @@ public class Controller implements Initializable {
                     contenuTweetsUser.getChildren().add(tweetActuel);
                 }
                 cadreTweetUser.setVisible(true);
+                LOGGER.info("Messages récupérés");
             }
             catch(Exception e)
             {
-
+                LOGGER.error(e.getMessage());
             }
+        }
+        else{
+            LOGGER.warn("le nom d'utilisateur doit être renseigné");
         }
 
     }
@@ -123,8 +142,10 @@ public class Controller implements Initializable {
     @FXML
     public void getTweetHashtag() {
         TwitterAPI twitterAPI = new TwitterAPI();
+        LOGGER.debug("Fonction de Récupération de Tweets");
         if(!textHashtag.getText().equals(""))
         {
+            LOGGER.debug("Le hashtag n'est pas vide");
             Text hashtagRecherche = new Text("");
             headerTweetsHashtag.getChildren().clear();
 
@@ -138,6 +159,7 @@ public class Controller implements Initializable {
             headerTweetsHashtag.getChildren().add(hashtagRecherche);
 
             try {
+                LOGGER.debug("Requête de récupération du dernier Tweet");
                 list = twitterAPI.voirTweetsSur(textHashtag.getText());
                 contenuTweetsHashtag.setLineSpacing(5);
                 contenuTweetsHashtag.setMaxWidth(1170);
@@ -154,6 +176,9 @@ public class Controller implements Initializable {
             {
 
             }
+        }
+        else {
+            LOGGER.warn("Le hashtag doit être renseigné");
         }
     }
 

@@ -10,6 +10,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -95,6 +97,8 @@ import java.util.List;
 
 public class TwitterAPI {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TwitterAPI.class);
+
 
     final static String AccessToken = "YourAccessToken";
     final static String AccessSecret = "YourAccessSecret";
@@ -107,27 +111,28 @@ public class TwitterAPI {
         OAuthConsumer consumer = new CommonsHttpOAuthConsumer(
                 ConsumerKey,
                 ConsumerSecret);
-
+        LOGGER.debug("définition des clés et tokens d'accès");
         consumer.setTokenWithSecret(AccessToken, AccessSecret);
 
 
 
         HttpPost requestPost = new HttpPost("https://api.twitter.com/1.1/statuses/update.json?status="+message);
         try {
+            LOGGER.debug("signature de la requête");
             consumer.sign(requestPost);
         }
         catch (Exception e){
-            //erreur lel
+            LOGGER.error("Erreur à la signature de la requête : " + e.getMessage());
         }
 
         HttpClient clientR = HttpClientBuilder.create().build();
         try{
             HttpResponse responseR = clientR.execute(requestPost);
             int statusCodeR = responseR.getStatusLine().getStatusCode();
-            System.out.println(statusCodeR + ":" + responseR.getStatusLine().getReasonPhrase());
+            LOGGER.info(statusCodeR + ":" + responseR.getStatusLine().getReasonPhrase());
         }
         catch (IOException e){
-            //erreur
+            LOGGER.error("Erreur de communication");
         }
 
     }
@@ -137,16 +142,22 @@ public class TwitterAPI {
         OAuthConsumer consumer = new CommonsHttpOAuthConsumer(
                 ConsumerKey,
                 ConsumerSecret);
+        LOGGER.debug("définition des clés et tokens d'accès");
 
         consumer.setTokenWithSecret(AccessToken, AccessSecret);
         HttpGet request = new HttpGet("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name="+screenName+"&count=5");
-        consumer.sign(request);
+        try {
+            LOGGER.debug("signature de la requête");
+            consumer.sign(request);
+        }
+        catch (Exception e){
+            LOGGER.error("Erreur à la signature de la requête : " + e.getMessage());
+        }
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = client.execute(request);
-
         int statusCode = response.getStatusLine().getStatusCode();
-        System.out.println(statusCode + ":" + response.getStatusLine().getReasonPhrase());
+        LOGGER.info(statusCode + ":" + response.getStatusLine().getReasonPhrase());
         String strReponse = (IOUtils.toString(response.getEntity().getContent()));
         JSONArray jsonArray = new JSONArray();
         try{
@@ -154,10 +165,13 @@ public class TwitterAPI {
             jsonArray = jsonArrayTest;
         }
         catch (Exception e){
-            list.add("Cet utilisateur n'existe pas !");}
+            list.add("Cet utilisateur n'existe pas !");
+            LOGGER.warn("utilisateur non existant");
+        }
         for(int i=0;i<jsonArray.length();i++) {
             list.add(jsonArray.getJSONObject(i).get("text").toString());
         }
+        LOGGER.debug("fin de récupération");
         return list;
     }
 
@@ -167,16 +181,23 @@ public class TwitterAPI {
         OAuthConsumer consumer = new CommonsHttpOAuthConsumer(
                 ConsumerKey,
                 ConsumerSecret);
+        LOGGER.debug("définition des clés et tokens d'accès");
 
         consumer.setTokenWithSecret(AccessToken, AccessSecret);
-        HttpGet request = new HttpGet("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"&count=5");
-        consumer.sign(request);
+        HttpGet request = new HttpGet("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag);
+        try {
+            LOGGER.debug("signature de la requête");
+            consumer.sign(request);
+        }
+        catch (Exception e){
+            LOGGER.error("Erreur à la signature de la requête : " + e.getMessage());
+        }
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = client.execute(request);
 
         int statusCode = response.getStatusLine().getStatusCode();
-        System.out.println(statusCode + ":" + response.getStatusLine().getReasonPhrase());
+       LOGGER.info(statusCode + ":" + response.getStatusLine().getReasonPhrase());
         String strReponseHashtag = (IOUtils.toString(response.getEntity().getContent()));
 
 
@@ -191,6 +212,7 @@ public class TwitterAPI {
                 }
                 catch(Exception e){
                     tweet.put("text", "Aucun tweet trouvé !");
+                    LOGGER.info("aucun tweet existant sur ce hashtag");
                 }
 
                 Object contenutweet = tweet.get("text");
@@ -200,8 +222,8 @@ public class TwitterAPI {
             }
         }
         catch (Exception e){
-            e.printStackTrace();
-            System.out.println(strReponseHashtag);
+            LOGGER.error("Erreur de communication : " + e.getMessage());
+            LOGGER.info(strReponseHashtag);
         }
         return list;
     }
