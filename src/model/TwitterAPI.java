@@ -99,7 +99,6 @@ public class TwitterAPI {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TwitterAPI.class);
 
-
     final static String AccessToken = "YourAccessToken";
     final static String AccessSecret = "YourAccessSecret";
     final static String ConsumerKey = "YourConsumerKey";
